@@ -718,7 +718,7 @@
                 img.onload = () => {
                     ctx.fillStyle = "#faf7f0"; ctx.fillRect(0, 0, w, h); ctx.fillStyle = "#f0f0f0"; ctx.fillRect(5 * scale, 5 * scale, w - 10 * scale, h - 10 * scale); 
                     ctx.fillStyle = "#ede6d8"; ctx.fillRect(10 * scale, 10 * scale, w - 20 * scale, h - 20 * scale); ctx.drawImage(img, 20 * scale, 20 * scale, w - 40 * scale, w - 40 * scale);
-                    ctx.fillStyle = "rgba(0,0,0,0.18)";
+                    ctx.fillStyle = "rgba(0,0,0,0.25)";
                    ctx.fillRect(20 * scale, 20 * scale, w - 40 * scale, w - 40 * scale);
                     texture.needsUpdate = true;
                 };
@@ -800,7 +800,7 @@
             const backTex = loadCoverTexture(COVER_URLS.back, COVER_URLS.spineColor); const backMat = new THREE.MeshStandardMaterial({ map: backTex, roughness: 0.3 });
             
             const edgeTexture = createPageEdgeTexture(); 
-            const pageMat = new THREE.MeshStandardMaterial({ map: edgeTexture, color: 0xffffff, emissive: 0x443311, emissiveIntensity: 0.1 });
+            const pageMat = new THREE.MeshStandardMaterial({ map: edgeTexture, color: 0xf3efe6, emissive: 0x443311, emissiveIntensity: 0.1 });
             const paperWhite = new THREE.MeshStandardMaterial({ color: "#fffcf5", emissive: "#ffddaa", emissiveIntensity: 0.3 });
 
             let currentHeight = 0; const coverThickness = 0.2;
