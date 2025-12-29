@@ -710,21 +710,21 @@
             const scale = 4; const w = 256 * scale; const h = 320 * scale;
             const canvas = document.createElement('canvas'); canvas.width = w; canvas.height = h; const ctx = canvas.getContext('2d');
             ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
-            ctx.fillStyle = "#ff0000"; ctx.fillRect(0, 0, w, h); ctx.fillStyle = "#f2e8d5"; ctx.fillRect(5 * scale, 5 * scale, w - 10 * scale, h - 10 * scale); 
-            ctx.fillStyle = "#ff0000"; ctx.fillRect(10 * scale, 10 * scale, w - 20 * scale, h - 20 * scale); ctx.fillStyle = "#1a1a1a"; ctx.fillRect(20 * scale, 20 * scale, w - 40 * scale, w - 40 * scale); 
+            ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, w, h); ctx.fillStyle = "#f0f0f0"; ctx.fillRect(5 * scale, 5 * scale, w - 10 * scale, h - 10 * scale); 
+            ctx.fillStyle = "#fff"; ctx.fillRect(10 * scale, 10 * scale, w - 20 * scale, h - 20 * scale); ctx.fillStyle = "#1a1a1a"; ctx.fillRect(20 * scale, 20 * scale, w - 40 * scale, w - 40 * scale); 
             const texture = new THREE.CanvasTexture(canvas); texture.colorSpace = THREE.SRGBColorSpace; texture.minFilter = THREE.LinearMipmapLinearFilter; texture.magFilter = THREE.LinearFilter; texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
             if (imageUrl) {
                 const img = new Image(); img.crossOrigin = "anonymous"; img.src = imageUrl;
                 img.onload = () => {
-                    ctx.fillStyle = "#ff0000"; ctx.fillRect(0, 0, w, h); ctx.fillStyle = "#f2e8d5"; ctx.fillRect(5 * scale, 5 * scale, w - 10 * scale, h - 10 * scale); 
-                    ctx.fillStyle = "#ff0000"; ctx.fillRect(10 * scale, 10 * scale, w - 20 * scale, h - 20 * scale); ctx.drawImage(img, 20 * scale, 20 * scale, w - 40 * scale, w - 40 * scale);
+                    ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, w, h); ctx.fillStyle = "#f0f0f0"; ctx.fillRect(5 * scale, 5 * scale, w - 10 * scale, h - 10 * scale); 
+                    ctx.fillStyle = "#fff"; ctx.fillRect(10 * scale, 10 * scale, w - 20 * scale, h - 20 * scale); ctx.drawImage(img, 20 * scale, 20 * scale, w - 40 * scale, w - 40 * scale);
+                    ctx.fillStyle = "rgba(0,0,0,0.18)";
+ctx.fillRect(20 * scale, 20 * scale, w - 40 * scale, w - 40 * scale);
                     texture.needsUpdate = true;
                 };
             }
-
             return texture;
         }
-
         function createEmptyPolaroidTexture() { const canvas = document.createElement('canvas'); canvas.width = 256; canvas.height = 320; const ctx = canvas.getContext('2d'); ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, 256, 320); ctx.fillStyle = "#111"; ctx.fillRect(20, 20, 216, 216); const tex = new THREE.CanvasTexture(canvas); tex.colorSpace = THREE.SRGBColorSpace; return tex; }
         function prepareDecoyAssets() { const emptyTex = createEmptyPolaroidTexture(); sharedDecoyGeo = new THREE.BoxGeometry(1.5, 1.8, 0.02); sharedDecoyMat = new THREE.MeshBasicMaterial({ map: emptyTex, transparent: true, opacity: 1.0, color: 0xFFFFFF }); }
 
